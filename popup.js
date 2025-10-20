@@ -131,6 +131,34 @@ chrome.storage.local.get(['birthday'], (data) => {
   }
 });
 
+// Check for updates (optional feature)
+function checkForUpdates() {
+  chrome.storage.local.get(['lastUpdateCheck'], (data) => {
+    const lastCheck = data.lastUpdateCheck || 0;
+    const now = Date.now();
+    const oneDay = 24 * 60 * 60 * 1000;
+    
+    // Check for updates once per day
+    if (now - lastCheck > oneDay) {
+      // Check GitHub for new releases
+      fetch('https://api.github.com/repos/TBPTech/topboompop-lifeclock-v2/releases/latest')
+        .then(response => response.json())
+        .then(release => {
+          const currentVersion = '2.0.0';
+          if (release.tag_name !== currentVersion) {
+            console.log('Update available:', release.tag_name);
+            // Could show update notification to user
+          }
+          chrome.storage.local.set({ lastUpdateCheck: now });
+        })
+        .catch(error => console.log('Update check failed:', error));
+    }
+  });
+}
+
+// Uncomment to enable update checking
+// checkForUpdates();
+
 function isValidTimer(timer) {
   return timer && 
          typeof timer.total === 'number' && timer.total > 0 &&
