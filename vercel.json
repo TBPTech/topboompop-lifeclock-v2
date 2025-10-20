@@ -1,21 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/analyzeDream.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/analyzeDream",
-      "dest": "/api/analyzeDream.js"
-    },
-    {
-      "src": "/api/health",
-      "dest": "/api/analyzeDream.js"
-    }
-  ],
+  "outputDirectory": ".",
   "headers": [
     {
       "source": "/api/(.*)",

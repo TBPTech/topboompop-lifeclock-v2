@@ -102,3 +102,4 @@ build/
 # API keys and secrets
 secrets.json
 config.json
+.vercel
