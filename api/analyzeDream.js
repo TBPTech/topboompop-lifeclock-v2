@@ -2,6 +2,7 @@ import express from 'express';
 import OpenAI from 'openai';
 import rateLimit from 'express-rate-limit';
 import { z } from 'zod';
+import { inject } from '@vercel/speed-insights';
 
 const app = express();
 
@@ -48,6 +49,9 @@ const dreamAnalysisLimiter = rateLimit({
 // Middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
+
+// Vercel Speed Insights
+app.use(inject());
 
 // CORS middleware for Chrome extension
 app.use((req, res, next) => {

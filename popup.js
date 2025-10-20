@@ -680,7 +680,7 @@ analyzeDreamBtn.addEventListener('click', async () => {
 
 // API Integration
 async function analyzeDreamWithAPI(dreamText) {
-  const API_BASE_URL = 'https://YOUR-VERCEL-URL.vercel.app'; // Replace with your actual Vercel URL
+  const API_BASE_URL = 'https://topboompop-lifeclock-v2.vercel.app'; // Replace with your actual Vercel URL
   
   const response = await fetch(`${API_BASE_URL}/api/analyzeDream`, {
     method: 'POST',
