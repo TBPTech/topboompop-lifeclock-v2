@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "api/analyzeDream.js",
-      "use": "@vercel passing"
+      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -16,15 +16,6 @@
       "dest": "/api/analyzeDream.js"
     }
   ],
-  "env": {
-    "OPENAI_API_KEY": "@openai-api-key"
-  },
-  "functions": {
-    "api/analyzeDream.js": {
-      "maxDuration": 30,
-      "memory": 1024
-    }
-  },
   "headers": [
     {
       "source": "/api/(.*)",
