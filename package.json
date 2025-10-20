@@ -1,0 +1,60 @@
+{
+  "name": "topboompop-lifeclock",
+  "version": "2.0.0",
+  "description": "Visualize your lifetime and structure your daily sessions with mindful time segmentation, including dream analysis.",
+  "type": "module",
+  "main": "api/analyzeDream.js",
+  "scripts": {
+    "start": "node api/analyzeDream.js",
+    "dev": "nodemon api/analyzeDream.js",
+    "build": "echo 'No build step required for Chrome extension'",
+    "test": "echo 'No tests specified'",
+    "lint": "eslint . --ext .js",
+    "format": "prettier --write .",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "chrome-extension",
+    "life-clock",
+    "productivity",
+    "timer",
+    "journal",
+    "dream-analysis",
+    "mindfulness",
+    "time-management"
+  ],
+  "author": "TOPBOOMPOP",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "openai": "^4.20.1",
+    "express-rate-limit": "^7.1.5",
+    "zod": "^3.22.4",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "vercel": "^32.7.4"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/topboompop-lifeclock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/topboompop-lifeclock/issues"
+  },
+  "homepage": "https://github.com/your-username/topboompop-lifeclock#readme",
+  "vercel": {
+    "functions": {
+      "api/analyzeDream.js": {
+        "maxDuration": 30
+      }
+    }
+  }
+}

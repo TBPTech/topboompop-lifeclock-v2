@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TOPBOOMPOP - Life Clock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="card">
+    <a href="https://www.TOPBOOMPOP.COM" target="_blank" class="brand">TOPBOOMPOP</a>
+    <h2 id="viewTitle">🕒 Life Clock</h2>
+    
+    <!-- Navigation Dropdown -->
+    <div class="nav-dropdown">
+      <select id="toolSelector" class="tool-selector">
+        <option value="lifeclock">🕒 Life Clock</option>
+        <option value="timer">⏱️ Segmented Timer</option>
+        <option value="journal">📝 Daily Journal</option>
+      </select>
+    </div>
+    
+    <div id="birthdaySetup" class="view active">
+      <label for="birthday">Enter your date of birth (MM/DD/YYYY)</label>
+      <input type="date" id="birthday" min="1924-01-01" max="">
+      <button id="calcTime">Calculate My Time</button>
+      <p class="disclaimer">
+        This is an estimate based on a 90-year lifespan.<br>
+        Ages 0-100 years only. Actual time left depends on health, environment, and destiny.
+      </p>
+    </div>
+    <div id="lifeClockView" class="view">
+      <div class="clock">
+        <p id="lived">Time Lived: -- years</p>
+        <div class="life-progress-container">
+          <div id="lifeProgressBar" class="life-progress-bar life-stage-early"></div>
+        </div>
+        <div class="countdown-display">
+          <div class="countdown-title">Time Remaining</div>
+          <div id="lifeCountdown" class="life-countdown">
+            <div class="time-unit">
+              <span id="yearsLeft" class="time-number">00</span>
+              <span class="time-label">Years</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+              <span id="monthsLeft" class="time-number">00</span>
+              <span class="time-label">Months</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+              <span id="daysLeft" class="time-number">00</span>
+              <span class="time-label">Days</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+              <span id="hoursLeft" class="time-number">00</span>
+              <span class="time-label">Hours</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+              <span id="minutesLeft" class="time-number">00</span>
+              <span class="time-label">Min</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+              <span id="secondsLeft" class="time-number">00</span>
+              <span class="time-label">Sec</span>
+            </div>
+          </div>
+        </div>
+        <p id="message">Every second builds your legacy.</p>
+      </div>
+      <button id="resetBirthday" class="switch">Change Birthday</button>
+    </div>
+    <div id="timerView" class="view">
+      <label>Total Time (minutes)</label>
+      <input type="number" id="totalTime" value="120">
+      <label>Segment Length (minutes)</label>
+      <input type="number" id="segmentLength" value="15">
+      <label>Grace Period (minutes)</label>
+      <input type="number" id="gracePeriod" value="2">
+      <button id="startBtn">Start Session</button>
+    </div>
+    <div id="countdownView" class="view">
+      <div class="countdown-display">
+        <div class="timer-info">
+          <p id="currentSegment">Segment 1 of 5</p>
+          <p id="sessionType">Work Time</p>
+        </div>
+        <div class="time-display">
+          <div id="countdownTime">15:00</div>
+        </div>
+        <div class="progress-bar">
+          <div id="progressFill"></div>
+        </div>
+        <div class="session-info">
+          <p id="sessionProgress">Total Progress: 0%</p>
+        </div>
+      </div>
+      <div class="timer-controls">
+        <button id="pauseBtn" class="control-btn">Pause</button>
+        <button id="resumeBtn" class="control-btn" style="display:none;">Resume</button>
+        <button id="stopBtn" class="switch">Stop Timer</button>
+      </div>
+    </div>
+    
+    <!-- Daily Journal View -->
+    <div id="journalView" class="view">
+      <div class="journal-header">
+        <h3 id="journalDate">Today's Entry</h3>
+        <div class="journal-controls">
+          <button id="prevDayBtn" class="nav-btn">←</button>
+          <button id="nextDayBtn" class="nav-btn">→</button>
+        </div>
+      </div>
+      
+      <div class="journal-content">
+        <div class="mood-selector">
+          <label>How was your day?</label>
+          <div class="mood-buttons">
+            <button class="mood-btn" data-mood="great">😊 Great</button>
+            <button class="mood-btn" data-mood="good">😌 Good</button>
+            <button class="mood-btn" data-mood="okay">😐 Okay</button>
+            <button class="mood-btn" data-mood="tough">😔 Tough</button>
+            <button class="mood-btn" data-mood="difficult">😞 Difficult</button>
+          </div>
+        </div>
+        
+        <div class="journal-entry">
+          <label for="journalText">What happened today?</label>
+          <textarea id="journalText" placeholder="Write about your day, thoughts, achievements, or anything on your mind..." rows="6"></textarea>
+        </div>
+        
+        <div class="journal-goals">
+          <label for="dailyGoal">Today's main goal:</label>
+          <input type="text" id="dailyGoal" placeholder="What do you want to accomplish today?">
+          
+          <label for="gratitude">Something you're grateful for:</label>
+          <input type="text" id="gratitude" placeholder="What made you smile today?">
+        </div>
+        
+        <div class="dream-section">
+          <label for="dreamEntry">Dream Journal:</label>
+          <textarea id="dreamEntry" placeholder="Record your dreams here... (optional)" rows="4"></textarea>
+          <button id="analyzeDreamBtn" class="analyze-btn">Analyze Dream</button>
+          <div id="dreamAnalysis" class="dream-analysis hidden">
+            <h4>Dream Analysis</h4>
+            <div id="dreamResults" class="dream-results"></div>
+          </div>
+        </div>
+        
+        <div class="journal-actions">
+          <button id="saveJournalBtn" class="save-btn">Save Entry</button>
+          <button id="clearJournalBtn" class="clear-btn">Clear</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">Stay consistent. Time = Legacy.</div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
